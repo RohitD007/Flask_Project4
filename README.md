@@ -1,11 +1,11 @@
 # Project Setup
 
-[![Production Workflow](https://github.com/RohitD007/project4_Transaction/actions/workflows/prod.yml/badge.svg)](https://github.com/RohitD007/project4_Transaction/actions/workflows/prod.yml)
+[![Production Workflow](https://github.com/RohitD007/Flask_Project4/actions/workflows/prod.yml/badge.svg)](https://github.com/RohitD007/Flask_Project4/actions/workflows/prod.yml)
 
 * [Production Deployment](https://rohit-project4.herokuapp.com/)
 
 
-[![Development Workflow](https://github.com/RohitD007/project4_Transaction/actions/workflows/dev.yml/badge.svg)](https://github.com/RohitD007/project4_Transaction/actions/workflows/dev.yml)
+[![Development Workflow](https://github.com/RohitD007/Flask_Project4/actions/workflows/dev.yml/badge.svg)](https://github.com/RohitD007/Flask_Project4/actions/workflows/dev.yml)
 
 * [Developmental Deployment](https://rohit-project4-dev.herokuapp.com/)
 
