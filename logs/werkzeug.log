@@ -276,3 +276,4 @@
 2022-05-11 19:04:52,279 [INFO] werkzeug: 172.29.0.1 - - [11/May/2022 19:04:52] "[32mPOST /transactions/upload HTTP/1.1[0m" 302 -
 2022-05-11 19:04:52,322 [INFO] werkzeug: 172.29.0.1 - - [11/May/2022 19:04:52] "GET /dashboard HTTP/1.1" 200 -
 2022-05-11 19:05:09,809 [INFO] werkzeug: 172.29.0.1 - - [11/May/2022 19:05:09] "GET /transactions/upload HTTP/1.1" 200 -
+2022-05-11 19:16:00,180 [INFO] werkzeug:  * Detected change in '/home/myuser/tests/conftest.py', reloading
