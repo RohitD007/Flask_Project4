@@ -3005,3 +3005,897 @@ CREATE TABLE locations (
 2022-05-11 19:42:07,139 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
 2022-05-11 19:42:07,139 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
 2022-05-11 19:42:07,140 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:25,620 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:25,621 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:25,622 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,623 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:49:25,623 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,624 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:25,624 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,625 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:49:25,625 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,626 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:25,627 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,627 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:49:25,628 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,629 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:49:25,630 [INFO] sqlalchemy.engine.Engine: [no key 0.00052s] ()
+2022-05-11 19:49:25,631 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:25,631 [INFO] sqlalchemy.engine.Engine: [no key 0.00061s] ()
+2022-05-11 19:49:25,632 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:25,632 [INFO] sqlalchemy.engine.Engine: [no key 0.00053s] ()
+2022-05-11 19:49:25,633 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:25,638 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:25,639 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:25,639 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,640 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:25,640 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,642 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:25,642 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,643 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:25,646 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:25,647 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:25,647 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,648 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:25,648 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,649 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:25,649 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,650 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:25,974 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:25,974 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:25,975 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,976 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:49:25,976 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,977 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:25,977 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,978 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:49:25,979 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,980 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:25,980 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,981 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:49:25,982 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:25,983 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:49:25,984 [INFO] sqlalchemy.engine.Engine: [no key 0.00042s] ()
+2022-05-11 19:49:25,985 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:25,985 [INFO] sqlalchemy.engine.Engine: [no key 0.00050s] ()
+2022-05-11 19:49:25,986 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:25,987 [INFO] sqlalchemy.engine.Engine: [no key 0.00047s] ()
+2022-05-11 19:49:25,987 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,012 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,013 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,014 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,015 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:49:26,015 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,016 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,016 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,017 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:49:26,018 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,018 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,019 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,019 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:49:26,019 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,020 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:49:26,021 [INFO] sqlalchemy.engine.Engine: [no key 0.00036s] ()
+2022-05-11 19:49:26,022 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,022 [INFO] sqlalchemy.engine.Engine: [no key 0.00054s] ()
+2022-05-11 19:49:26,023 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,024 [INFO] sqlalchemy.engine.Engine: [no key 0.00074s] ()
+2022-05-11 19:49:26,025 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,044 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,045 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,045 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,046 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:49:26,047 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,047 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,048 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,049 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:49:26,049 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,049 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,050 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,050 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:49:26,051 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,052 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:49:26,052 [INFO] sqlalchemy.engine.Engine: [no key 0.00042s] ()
+2022-05-11 19:49:26,054 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,054 [INFO] sqlalchemy.engine.Engine: [no key 0.00043s] ()
+2022-05-11 19:49:26,055 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,055 [INFO] sqlalchemy.engine.Engine: [no key 0.00038s] ()
+2022-05-11 19:49:26,056 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,077 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,077 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,078 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,078 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:49:26,079 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,080 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,080 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,081 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:49:26,081 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,082 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,082 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,083 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:49:26,083 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,084 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:49:26,085 [INFO] sqlalchemy.engine.Engine: [no key 0.00058s] ()
+2022-05-11 19:49:26,086 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,086 [INFO] sqlalchemy.engine.Engine: [no key 0.00054s] ()
+2022-05-11 19:49:26,087 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,088 [INFO] sqlalchemy.engine.Engine: [no key 0.00042s] ()
+2022-05-11 19:49:26,088 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,113 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,114 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,114 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,115 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:49:26,116 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,117 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,117 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,118 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:49:26,118 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,119 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,120 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,120 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:49:26,121 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,122 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:49:26,123 [INFO] sqlalchemy.engine.Engine: [no key 0.00058s] ()
+2022-05-11 19:49:26,124 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,124 [INFO] sqlalchemy.engine.Engine: [no key 0.00058s] ()
+2022-05-11 19:49:26,125 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,125 [INFO] sqlalchemy.engine.Engine: [no key 0.00040s] ()
+2022-05-11 19:49:26,126 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,130 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,130 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,131 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,131 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,132 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,132 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,133 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,133 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,137 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,137 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,138 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,139 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,139 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,140 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,140 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,141 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,413 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,414 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,414 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,415 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:49:26,416 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,416 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,417 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,418 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:49:26,418 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,419 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,419 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,420 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:49:26,421 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,422 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:49:26,422 [INFO] sqlalchemy.engine.Engine: [no key 0.00047s] ()
+2022-05-11 19:49:26,423 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,423 [INFO] sqlalchemy.engine.Engine: [no key 0.00046s] ()
+2022-05-11 19:49:26,424 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:49:26,425 [INFO] sqlalchemy.engine.Engine: [no key 0.00037s] ()
+2022-05-11 19:49:26,425 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,429 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,429 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,430 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,431 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,431 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,432 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,432 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,433 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:49:26,436 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:49:26,437 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:49:26,437 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,438 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:49:26,438 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,439 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:49:26,439 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:49:26,440 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:39,985 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:39,986 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:39,987 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:39,988 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:50:39,989 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:39,990 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:39,990 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:39,991 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:50:39,992 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:39,993 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:39,993 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:39,994 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:50:39,995 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:39,996 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:50:39,997 [INFO] sqlalchemy.engine.Engine: [no key 0.00062s] ()
+2022-05-11 19:50:39,998 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:39,998 [INFO] sqlalchemy.engine.Engine: [no key 0.00067s] ()
+2022-05-11 19:50:39,999 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,000 [INFO] sqlalchemy.engine.Engine: [no key 0.00065s] ()
+2022-05-11 19:50:40,001 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,007 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,007 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,008 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,009 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,009 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,010 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,010 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,011 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,015 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,016 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,017 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,017 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,018 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,019 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,020 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,021 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,329 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,329 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,330 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,331 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:50:40,331 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,332 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,333 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,333 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:50:40,334 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,335 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,335 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,336 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:50:40,337 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,339 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:50:40,340 [INFO] sqlalchemy.engine.Engine: [no key 0.00077s] ()
+2022-05-11 19:50:40,341 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,342 [INFO] sqlalchemy.engine.Engine: [no key 0.00074s] ()
+2022-05-11 19:50:40,343 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,343 [INFO] sqlalchemy.engine.Engine: [no key 0.00070s] ()
+2022-05-11 19:50:40,344 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,366 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,367 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,368 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,369 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:50:40,369 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,370 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,371 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,371 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:50:40,372 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,373 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,374 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,374 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:50:40,375 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,376 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:50:40,377 [INFO] sqlalchemy.engine.Engine: [no key 0.00058s] ()
+2022-05-11 19:50:40,377 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,378 [INFO] sqlalchemy.engine.Engine: [no key 0.00059s] ()
+2022-05-11 19:50:40,379 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,380 [INFO] sqlalchemy.engine.Engine: [no key 0.00059s] ()
+2022-05-11 19:50:40,380 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,399 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,400 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,401 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,402 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:50:40,402 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,403 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,403 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,404 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:50:40,405 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,405 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,406 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,407 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:50:40,407 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,408 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:50:40,409 [INFO] sqlalchemy.engine.Engine: [no key 0.00050s] ()
+2022-05-11 19:50:40,410 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,410 [INFO] sqlalchemy.engine.Engine: [no key 0.00058s] ()
+2022-05-11 19:50:40,411 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,412 [INFO] sqlalchemy.engine.Engine: [no key 0.00050s] ()
+2022-05-11 19:50:40,412 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,429 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,430 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,431 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,432 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:50:40,432 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,433 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,434 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,435 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:50:40,435 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,436 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,436 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,437 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:50:40,438 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,439 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:50:40,439 [INFO] sqlalchemy.engine.Engine: [no key 0.00057s] ()
+2022-05-11 19:50:40,440 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,441 [INFO] sqlalchemy.engine.Engine: [no key 0.00056s] ()
+2022-05-11 19:50:40,442 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,442 [INFO] sqlalchemy.engine.Engine: [no key 0.00063s] ()
+2022-05-11 19:50:40,443 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,464 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,465 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,465 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,466 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:50:40,467 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,467 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,468 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,468 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:50:40,469 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,470 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,470 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,471 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:50:40,471 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,472 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:50:40,473 [INFO] sqlalchemy.engine.Engine: [no key 0.00057s] ()
+2022-05-11 19:50:40,474 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,474 [INFO] sqlalchemy.engine.Engine: [no key 0.00057s] ()
+2022-05-11 19:50:40,475 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,476 [INFO] sqlalchemy.engine.Engine: [no key 0.00053s] ()
+2022-05-11 19:50:40,476 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,481 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,482 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,482 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,483 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,483 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,484 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,486 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,486 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,490 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,491 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,491 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,492 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,492 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,493 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,493 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,494 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,729 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,730 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,730 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,731 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("transactions")
+2022-05-11 19:50:40,732 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,732 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,733 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,733 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("locations")
+2022-05-11 19:50:40,734 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,735 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,735 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,736 [INFO] sqlalchemy.engine.Engine: PRAGMA temp.table_info("users")
+2022-05-11 19:50:40,736 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,737 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	password VARCHAR(300) NOT NULL, 
+	about VARCHAR(300), 
+	authenticated BOOLEAN, 
+	registered_on DATETIME, 
+	is_active BOOLEAN DEFAULT '1' NOT NULL, 
+	is_admin BOOLEAN DEFAULT '0' NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2022-05-11 19:50:40,738 [INFO] sqlalchemy.engine.Engine: [no key 0.00038s] ()
+2022-05-11 19:50:40,739 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	amount NUMERIC(10, 2) NOT NULL, 
+	description VARCHAR(300), 
+	user_id INTEGER, 
+	transaction_type VARCHAR(6), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,739 [INFO] sqlalchemy.engine.Engine: [no key 0.00038s] ()
+2022-05-11 19:50:40,740 [INFO] sqlalchemy.engine.Engine: 
+CREATE TABLE locations (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300), 
+	longitude VARCHAR(300), 
+	latitude VARCHAR(300), 
+	population INTEGER, 
+	user_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-05-11 19:50:40,740 [INFO] sqlalchemy.engine.Engine: [no key 0.00049s] ()
+2022-05-11 19:50:40,741 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,746 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,747 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,747 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,748 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,748 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,749 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,750 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,750 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-11 19:50:40,754 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-11 19:50:40,755 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("transactions")
+2022-05-11 19:50:40,755 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,756 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("locations")
+2022-05-11 19:50:40,756 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,757 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-11 19:50:40,758 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-11 19:50:40,758 [INFO] sqlalchemy.engine.Engine: COMMIT
