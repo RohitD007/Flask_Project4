@@ -70,9 +70,12 @@ def setup_upload():
 @transactions.route('/transactions/upload', methods=['POST', 'GET'])
 @login_required
 def transactions_upload():
-    """ use form to upload song list CSV """
-    log = logging.getLogger("upload_transactions")
-    form = CsvUpload()
+    form = csv_upload()
+    if form.validate_on_submit():
+        log = logging.getLogger("myApp")
+    if form.validate_on_submit():
+        log = logging.getLogger("CSV_upload")
+        log.info('csv upload successful!')
 
     if request.method == 'POST':
         if form.validate_on_submit():
