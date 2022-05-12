@@ -7,7 +7,7 @@
     {% block title %}Browse: {{ record_type }}{% endblock %}
     {% block content %}
 
-                <a href="{{ url_for("transactions.transactions_upload") }}" class="btn col-3 mb-5 btn-info" role="button">Upload Transactions</a>
+        <a href="{{ url_for("transactions.transactions_upload") }}" class="btn col-3 mb-5 btn-info" role="button">Upload Transactions</a>
 
         <h2>Browse: Transactions</h2>
         {{ render_table(data) }}
@@ -26,6 +26,8 @@
 
 
     {% endblock %}
+</div>
+
 </div>
 
 

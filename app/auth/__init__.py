@@ -2,11 +2,12 @@ from flask import Blueprint, render_template, redirect, url_for, flash, current_
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash
 from jinja2 import TemplateNotFound
-from sqlalchemy import func
+
 from app.auth.decorators import admin_required
 from app.auth.forms import login_form, register_form, profile_form, security_form, user_edit_form
 from app.db import db
-from app.db.models import User, Transaction, TransactionType
+from app.db.models import User
+from app.db.models import Transaction
 
 auth = Blueprint('auth', __name__, template_folder='templates')
 
@@ -67,30 +68,32 @@ def logout():
 
 
 @auth.route('/dashboard', methods=['GET'], defaults={"page": 1})
+@auth.route('/dashboard/<int:page>', methods=['GET'])
 @login_required
 def dashboard(page):
     page = page
-    per_page = 30
+    per_page = 1000
+    pagination = Transaction.query.filter_by(user_id=current_user.id).paginate(page, per_page, error_out=False)
+    user_object = User.query.get(current_user.id)
+    data = []
+    for count, item in enumerate(pagination.items):
+        transaction = pagination.items[count]
+        transaction_amount = transaction.amount
+        transaction_type = transaction.transaction_type
+        transaction_user = transaction.user_id
 
-    user_id = current_user.get_id()
-
-    pagination = Transaction.query.filter_by(user_id=user_id).paginate(page, per_page, error_out=False)
-    data = pagination.items
-
-    result = db.session.query(func.sum(Transaction.amount)) \
-        .filter(Transaction.user_id == user_id) \
-        .group_by(Transaction.transaction_type).all()
-
-    if result:
-        balance = result[0][0] + result[1][0]
-    else:
-        balance = 0
+        data.append({
+            'id': count + 1,
+            'Transaction Amount': transaction_amount,
+            'Transaction Type': transaction_type,
+            'Transaction User': transaction_user
+        })
+    user_balance = user_object.balance
 
     try:
-        return render_template('dashboard.html', data=data, balance=balance)
+        return render_template('dashboard.html', data=data, pagination=pagination, user_balance=user_balance)
     except TemplateNotFound:
         abort(404)
-
 
 @auth.route('/profile', methods=['POST', 'GET'])
 def edit_profile():

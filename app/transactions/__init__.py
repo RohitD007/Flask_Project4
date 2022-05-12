@@ -2,18 +2,16 @@ import csv
 import logging
 import os
 
-from flask import Blueprint, render_template, abort, url_for, current_app, request, url_for
+from flask import Blueprint, render_template, abort, url_for, current_app
 from flask_login import current_user, login_required
-from flask_wtf import FlaskForm
-from csv import DictReader
 from jinja2 import TemplateNotFound
-import wtforms
-import werkzeug
 
 from app.db import db
-from app.db.models import Transaction, TransactionType
+from app.db.models import Transaction
+from app.db.models import User
 from app.transactions.forms import csv_upload
 from werkzeug.utils import secure_filename, redirect
+from app.auth import auth
 
 transactions = Blueprint('transactions', __name__,
                          template_folder='templates')
@@ -21,50 +19,31 @@ transactions = Blueprint('transactions', __name__,
 
 @transactions.route('/transactions', methods=['GET'], defaults={"page": 1})
 @transactions.route('/transactions/<int:page>', methods=['GET'])
+@login_required
 def transactions_browse(page):
     page = page
-    per_page = 30
-    pagination = Transaction.query.paginate(page, per_page, error_out=False)
-    data = pagination.items
+    per_page = 1000
+    pagination = Transaction.query.filter_by(user_id=current_user.id).paginate(page, per_page, error_out=False)
+    user_object = User.query.get(current_user.id)
+    data = []
+    for count, item in enumerate(pagination.items):
+        transaction = pagination.items[count]
+        transaction_amount = transaction.amount
+        transaction_type = transaction.transaction_type
+        transaction_user = transaction.user_id
+
+        data.append({
+            'id': count+1,
+            'Transaction Amount': transaction_amount,
+            'Transaction Type': transaction_type,
+            'Transaction User': transaction_user
+        })
+    user_balance = user_object.balance
+
     try:
-        return render_template('browse_transaction.html', data=data, pagination=pagination)
+        return render_template('browse_transactions.html', data=data, pagination=pagination, user_balance=user_balance)
     except TemplateNotFound:
         abort(404)
-
-def open_and_parse_csv(filepath):
-    """ utility function to open and parse a CSV """
-    transaction_list = []
-    log = logging.getLogger("upload_transactions")
-
-    with open(filepath, encoding="utf-8-sig") as file:
-        csv_table = DictReader(file, dialect='excel')
-        log.info("[%s] opened and parsing filepath:[%s]",
-                 current_user, filepath)
-
-        log.info("CSV: %s, Fieldnames: %s", filepath, csv_table.fieldnames)
-
-        csv_header = Transaction.csv_headers()
-        for row in csv_table:
-            amount = row[csv_header[0]]
-            transaction_type = TransactionType[row[csv_header[1]]]
-
-            transaction_list.append(Transaction(amount, transaction_type))
-
-    return transaction_list
-
-
-class CsvUpload(FlaskForm):
-    """ form for uploading CSV"""
-    file = wtforms.FileField()
-    submit = wtforms.SubmitField()
-
-
-@transactions.before_app_first_request
-def setup_upload():
-    """ create upload directory """
-    logdir = current_app.config['UPLOAD_FOLDER']
-    if not os.path.exists(logdir):
-        os.mkdir(logdir)
 
 
 @transactions.route('/transactions/upload', methods=['POST', 'GET'])
@@ -72,26 +51,33 @@ def setup_upload():
 def transactions_upload():
     form = csv_upload()
     if form.validate_on_submit():
-        log = logging.getLogger("myApp")
-    if form.validate_on_submit():
-        log = logging.getLogger("CSV_upload")
+        user = User.query.get(current_user.id)
+        balance = user.balance if user.balance is not None else 0
+        # writing a log into the uploads.log file everytime a csv file is uploaded.
+        log = logging.getLogger("uploads")
         log.info('csv upload successful!')
+        filename = secure_filename(form.file.data.filename)
+        filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+        form.file.data.save(filepath)
+        with open(filepath) as file:
+            field_names = ['AMOUNT', 'TYPE']
+            next(file)
+            csv_file = csv.DictReader(file, fieldnames=field_names,)
+            for row in csv_file:
+                transaction = Transaction(user.id, row['AMOUNT'], row['TYPE'])
+                db.session.add(transaction)
+                if transaction.transaction_type == 'CREDIT':
+                    balance = balance + int(transaction.amount)
+                if transaction.transaction_type == 'DEBIT':
+                    balance = balance + int(transaction.amount)
 
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            filename = werkzeug.utils.secure_filename(form.file.data.filename)
-            filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-            form.file.data.save(filepath)
-            transactions_list = open_and_parse_csv(filepath)
-
-            current_user.transactions += transactions_list  # pylint: disable=assigning-non-slot
-            db.session.commit()  # pylint: disable=no-member
-
-            return redirect(url_for('auth.dashboard'))
-        else:
-            log.info("form failed validation")
+            user.balance = balance
+        db.session.commit()
+        return redirect(url_for('transactions.transactions_browse'))
 
     try:
         return render_template('upload.html', form=form)
+        return redirect(url_for('browse_transactions.html', data=data, pagination=pagination, user_balance=user_balance))
     except TemplateNotFound:
         abort(404)
+
