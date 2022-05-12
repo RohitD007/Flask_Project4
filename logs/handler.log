@@ -20,3 +20,106 @@
 2022-05-11 18:40:08,008 [INFO] upload_transactions: CSV: /home/myuser/app/uploads/abc.csv, Fieldnames: ['AMOUNT', 'TYPE']
 2022-05-11 19:04:52,242 [INFO] upload_transactions: [<User 'rgd3@njit.edu'>] opened and parsing filepath:[/home/myuser/app/uploads/abc.csv]
 2022-05-11 19:04:52,244 [INFO] upload_transactions: CSV: /home/myuser/app/uploads/abc.csv, Fieldnames: ['AMOUNT', 'TYPE']
+2022-05-11 20:11:52,081 [INFO] upload_transactions: [None] opened and parsing filepath:[/home/myuser/app/../tests/transactions.csv]
+2022-05-11 20:11:52,084 [INFO] upload_transactions: CSV: /home/myuser/app/../tests/transactions.csv, Fieldnames: ['AMOUNT', 'TYPE', '', '', '']
+2022-05-11 20:14:23,250 [INFO] upload_transactions: [None] opened and parsing filepath:[/home/myuser/app/../tests/transactions.csv]
+2022-05-11 20:14:23,252 [INFO] upload_transactions: CSV: /home/myuser/app/../tests/transactions.csv, Fieldnames: ['AMOUNT', 'TYPE', '', '', '']
+2022-05-11 20:15:19,040 [INFO] upload_transactions: [None] opened and parsing filepath:[/home/myuser/app/../tests/transactions.csv]
+2022-05-11 20:15:19,042 [INFO] upload_transactions: CSV: /home/myuser/app/../tests/transactions.csv, Fieldnames: ['AMOUNT', 'TYPE', '', '', '']
+2022-05-11 20:18:38,127 [INFO] upload_transactions: [None] opened and parsing filepath:[/home/myuser/app/../tests/transactions.csv]
+2022-05-11 20:18:38,130 [INFO] upload_transactions: CSV: /home/myuser/app/../tests/transactions.csv, Fieldnames: ['AMOUNT', 'TYPE', '', '', '']
+2022-05-11 20:20:25,824 [INFO] upload_transactions: [None] opened and parsing filepath:[/home/myuser/app/../tests/transactions.csv]
+2022-05-11 20:20:25,825 [INFO] upload_transactions: CSV: /home/myuser/app/../tests/transactions.csv, Fieldnames: ['AMOUNT', 'TYPE', '', '', '']
+2022-05-12 03:13:05,554 [INFO] csv: 2000
+2022-05-12 03:13:05,555 [INFO] csv: 2000
+2022-05-12 03:13:05,556 [INFO] csv: -100
+2022-05-12 03:13:05,556 [INFO] csv: 200
+2022-05-12 03:13:05,556 [INFO] csv: 200
+2022-05-12 03:13:05,557 [INFO] csv: 200
+2022-05-12 03:13:05,557 [INFO] csv: -1000
+2022-05-12 03:13:05,557 [INFO] csv: 200
+2022-05-12 03:13:05,558 [INFO] csv: 1000
+2022-05-12 03:13:05,558 [INFO] csv: -100
+2022-05-12 03:13:05,559 [INFO] csv: 100
+2022-05-12 03:13:05,560 [INFO] csv: 1000
+2022-05-12 03:13:05,560 [INFO] csv: 1000
+2022-05-12 03:13:05,560 [INFO] csv: -100
+2022-05-12 03:13:05,561 [INFO] csv: 1000
+2022-05-12 03:13:05,561 [INFO] csv: 100
+2022-05-12 03:13:05,562 [INFO] csv: -100
+2022-05-12 03:13:05,562 [INFO] csv: 100
+2022-05-12 03:13:05,563 [INFO] csv: 100
+2022-05-12 03:13:05,563 [INFO] csv: 100
+2022-05-12 03:13:05,563 [INFO] csv: -100
+2022-05-12 03:13:05,564 [INFO] csv: 100
+2022-05-12 03:13:05,564 [INFO] csv: 4242
+2022-05-12 03:13:05,565 [INFO] csv: -2324
+2022-05-12 03:13:05,565 [INFO] csv: 4242
+2022-05-12 03:13:05,566 [INFO] csv: 432
+2022-05-12 03:13:05,566 [INFO] csv: 432
+2022-05-12 03:13:05,567 [INFO] csv: -4323
+2022-05-12 03:13:05,574 [INFO] csv: 10601
+2022-05-12 03:13:05,574 [INFO] csv: Uploaded CSV successfully
+2022-05-12 03:13:05,575 [INFO] csv: transactions.csv
+2022-05-12 03:21:09,355 [INFO] csv: 2000
+2022-05-12 03:21:45,380 [INFO] csv: 2000
+2022-05-12 03:22:05,870 [INFO] csv: 2000
+2022-05-12 03:22:05,871 [INFO] csv: 2000
+2022-05-12 03:22:05,878 [INFO] csv: 4000
+2022-05-12 03:22:05,878 [INFO] csv: Uploaded CSV successfully
+2022-05-12 03:22:05,879 [INFO] csv: abc.csv
+2022-05-12 03:22:37,048 [INFO] csv: 2000
+2022-05-12 03:22:37,049 [INFO] csv: 2000
+2022-05-12 03:22:37,053 [INFO] csv: 4000
+2022-05-12 03:22:37,053 [INFO] csv: Uploaded CSV successfully
+2022-05-12 03:22:37,054 [INFO] csv: abc.csv
+2022-05-12 03:26:59,278 [INFO] csv: 2000
+2022-05-12 03:26:59,279 [INFO] csv: 2000
+2022-05-12 03:26:59,283 [INFO] csv: 4000
+2022-05-12 03:26:59,283 [INFO] csv: Uploaded CSV successfully
+2022-05-12 03:26:59,284 [INFO] csv: abc.csv
+2022-05-12 03:29:37,481 [INFO] csv: 2000
+2022-05-12 03:29:37,482 [INFO] csv: 2000
+2022-05-12 03:29:37,482 [INFO] csv: -100
+2022-05-12 03:29:37,483 [INFO] csv: 200
+2022-05-12 03:29:37,483 [INFO] csv: 200
+2022-05-12 03:29:37,483 [INFO] csv: 200
+2022-05-12 03:29:37,484 [INFO] csv: -1000
+2022-05-12 03:29:37,484 [INFO] csv: 200
+2022-05-12 03:29:37,484 [INFO] csv: 1000
+2022-05-12 03:29:37,485 [INFO] csv: -100
+2022-05-12 03:29:37,485 [INFO] csv: 100
+2022-05-12 03:29:37,486 [INFO] csv: 1000
+2022-05-12 03:29:37,486 [INFO] csv: 1000
+2022-05-12 03:29:37,487 [INFO] csv: -100
+2022-05-12 03:29:37,487 [INFO] csv: 1000
+2022-05-12 03:29:37,488 [INFO] csv: 100
+2022-05-12 03:29:37,488 [INFO] csv: -100
+2022-05-12 03:29:37,489 [INFO] csv: 100
+2022-05-12 03:29:37,489 [INFO] csv: 100
+2022-05-12 03:29:37,490 [INFO] csv: 100
+2022-05-12 03:29:37,490 [INFO] csv: -100
+2022-05-12 03:29:37,491 [INFO] csv: 100
+2022-05-12 03:29:37,491 [INFO] csv: 4242
+2022-05-12 03:29:37,492 [INFO] csv: -2324
+2022-05-12 03:29:37,492 [INFO] csv: 4242
+2022-05-12 03:29:37,493 [INFO] csv: 432
+2022-05-12 03:29:37,493 [INFO] csv: 432
+2022-05-12 03:29:37,494 [INFO] csv: -4323
+2022-05-12 03:29:37,499 [INFO] csv: 10601
+2022-05-12 03:29:37,500 [INFO] csv: Uploaded CSV successfully
+2022-05-12 03:29:37,500 [INFO] csv: transactions.csv
+2022-05-12 04:11:22,648 [INFO] uploads: csv upload successful!
+2022-05-12 04:20:20,173 [INFO] uploads: csv upload successful!
+2022-05-12 04:21:27,915 [INFO] uploads: csv upload successful!
+2022-05-12 04:23:19,794 [INFO] uploads: csv upload successful!
+2022-05-12 04:33:12,386 [INFO] uploads: csv upload successful!
+2022-05-12 04:33:35,095 [INFO] uploads: csv upload successful!
+2022-05-12 04:36:23,292 [INFO] uploads: csv upload successful!
+2022-05-12 04:36:36,936 [INFO] uploads: csv upload successful!
+2022-05-12 04:36:58,619 [INFO] uploads: csv upload successful!
+2022-05-12 04:38:49,285 [INFO] uploads: csv upload successful!
+2022-05-12 04:39:22,242 [INFO] uploads: csv upload successful!
+2022-05-12 04:40:45,593 [INFO] uploads: csv upload successful!
+2022-05-12 04:42:29,400 [INFO] uploads: csv upload successful!
+2022-05-12 04:43:22,163 [INFO] uploads: csv upload successful!

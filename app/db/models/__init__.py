@@ -1,44 +1,33 @@
 from datetime import datetime
-
-from sqlalchemy import Integer, ForeignKey
-import enum
-from sqlalchemy.types import Enum
 from sqlalchemy.orm import relationship
+from sqlalchemy import Integer, ForeignKey
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.db import db
 from flask_login import UserMixin
 from sqlalchemy_serializer import SerializerMixin
 
 
-@enum.unique
-class TransactionType(enum.Enum):
-    """ Enum for column """
-    CREDIT = 'CREDIT'
-    DEBIT = 'DEBIT'
-
-
-class Transaction(db.Model):
-    """ Account Transaction Database """
-    # pylint: disable=no-member
+class Transaction(db.Model, SerializerMixin):
     __tablename__ = 'transactions'
-
     id = db.Column(db.Integer, primary_key=True)
-    amount = db.Column(db.Numeric(10, 2), nullable=False, default=0)
-    description = db.Column(db.String(300), nullable=True, unique=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    transaction_type = db.Column(Enum(TransactionType), nullable=True, unique=False)
-
+    amount = db.Column(db.Integer, unique=False)
+    transaction_type = db.Column(db.String(300), unique=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, unique=False)
     user = relationship("User", back_populates="transactions", uselist=False)
 
-    def __init__(self, amount, transaction_type):
+    def __init__(self, user_id, amount, transaction_type):
+        self.user_id = user_id
         self.amount = amount
         self.transaction_type = transaction_type
 
-    @staticmethod
-    def csv_headers():
-        """ returns tuple of CSV header """
-        transaction_types = ('AMOUNT', 'TYPE')
-        return transaction_types
+    def get_amount(self):
+        return self.amount
+
+    def get_transaction_type(self):
+        return self.transaction_type
+
+    def get_user_id(self):
+        return self.user_id
 
 
 class Location(db.Model, SerializerMixin):
@@ -78,6 +67,7 @@ class User(UserMixin, db.Model):
     registered_on = db.Column('registered_on', db.DateTime)
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
     is_admin = db.Column('is_admin', db.Boolean(), nullable=False, server_default='0')
+    balance = db.Column(db.Integer, unique=False, default=0)
     locations = db.relationship("Location", back_populates="user", cascade="all, delete")
     transactions = db.relationship("Transaction", back_populates="user", cascade="all, delete")
 
